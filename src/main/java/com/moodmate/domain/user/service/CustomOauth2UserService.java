@@ -3,6 +3,7 @@ package com.moodmate.domain.user.service;
 import com.moodmate.domain.user.entity.User;
 import com.moodmate.domain.user.ouath.CustomOauth2User;
 import com.moodmate.domain.user.ouath.GoogleUserDetails;
+import com.moodmate.domain.user.ouath.KakaoUserDetails;
 import com.moodmate.domain.user.ouath.OAuth2UserInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +31,7 @@ public class CustomOauth2UserService extends DefaultOAuth2UserService {
         if (provider.equals("google")) {
             userInfo = new GoogleUserDetails(oAuth2User.getAttributes());
         } else if (provider.equals("kakao")) {
-            //userInfo = new KakaoUserDetails(oAuth2User.getAttributes());
+            userInfo = new KakaoUserDetails(oAuth2User.getAttributes());
         } else {
             throw new OAuth2AuthenticationException("지원하지 않는 로그인 제공자입니다.");
         }
